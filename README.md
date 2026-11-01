@@ -4,7 +4,7 @@ Capture a region. Extract the text. Translate it without leaving your desktop.
 
 ScreenText is a portable Windows application with local OCR, editable source and translation panes, and optional AI extraction and translation through a ChatGPT plan or GitHub Copilot account. No model API key is required.
 
-**[Download for Windows x64](https://github.com/Kechos23/ScreenText/releases/latest)** · [Gitea releases](https://gitea.local.kechos.com/Kechos23/ScreenText/releases) · [Release notes](docs/releases/v1.0.0.md)
+**[Download for Windows x64](https://github.com/Kechos23/ScreenText/releases/latest)** · [Gitea releases](https://gitea.kechos.com/Kechos23/ScreenText/releases) · [Release notes](docs/releases/v1.0.0.md)
 
 ![ScreenText in dark mode](assets/screenshots/screentext-dark.png)
 
