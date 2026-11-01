@@ -13,3 +13,5 @@ CopilotHost.cs
 CopilotConnection.cs
 CopilotUi.cs
 AppVersion.cs
+CodexCliConnection.cs
+CodexCliUi.cs

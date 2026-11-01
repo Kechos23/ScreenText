@@ -85,7 +85,7 @@ The earlier OneDrive prototype is not an active checkout. Do not edit or launch 
 - AppStorage keeps portable writable preferences, otherwise uses LocalAppData/ScreenText/Settings. Import only known preference files if absent; never auth files, screenshots, CLI hints or overwrite existing per-user choices.
 
 ## OpenAI account and models
-- Settings > AI Providers uses one independent Sign in with ChatGPT connection. Account and Models tabs keep the page compact. No connection-method selector or UI calls to the legacy CLI backend remain. Main extraction is Local / AI. Do not restore a CLI/auth/billing fallback.
+- Settings > AI Providers offers explicit OpenAI Direct and Codex CLI methods. Account and Models tabs keep the page compact. Direct is the existing independent sign-in; Codex CLI uses only official app-server account/login/logout/model/request methods and shared CLI credentials, never imports token files. No automatic auth/provider/billing fallback. Main extraction is Local / AI.
 - ChatGptConnection retains its own OAuth PKCE/nonce/state flow, signed ID-token validation and public Responses requests with store=false/stream=true. Tokens remain CurrentUser-DPAPI protected under LocalAppData/ScreenText/ChatGPT/connection.dat, outside portable prefs/ZIP. Preserve stable host/client mapping, serialized refresh, and saved sessions across normal close/restart.
 - Old Provider preferences are ignored; existing per-operation models and own encrypted login are kept. Former CLI-only users must authorize ScreenText once. Never import Codex/browser credentials or sign out other apps.
 - Account/model UI changes never generate inference requests. Sign out revokes only the selected ScreenText connection and reports unconfirmed remote revocation. Network/model failures preserve existing login and committed editor content. Invalid renewal credentials may require reconnect.
@@ -144,3 +144,6 @@ The earlier OneDrive prototype is not an active checkout. Do not edit or launch 
 - Audit the exact staged file list and release archive before publishing. Never stage caches, runtime dependencies, auth/profiles, historical live probes, private screenshots or personal migration logs.
 - Release requires complete offline All validation and identical source commit/tag and ZIP/SHA256SUMS assets in GitHub/Gitea. Publishing/commits require explicit user authorization.
 - LanguageSmoke runs inside a real Application.Run loop so async continuations survive modal close. Do not replace it with Application.DoEvents alone or extend timeouts to hide a context deadlock.
+
+## Codex CLI connection (1.1)
+- Explicit method selection preserves Direct and Copilot connections and independent model defaults. CLI credentials stay owned by Codex; logout confirms its shared impact. Requests recheck displayed identity, refuse account changes/API-key auth, and use ephemeral tool-disabled sessions. Never log auth URLs, tokens, or raw runtime errors.

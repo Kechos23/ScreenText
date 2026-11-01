@@ -4,7 +4,7 @@ Capture a region. Extract the text. Translate it without leaving your desktop.
 
 ScreenText is a portable Windows application with local OCR, editable source and translation panes, and optional AI extraction and translation through a ChatGPT plan or GitHub Copilot account. No model API key is required.
 
-**[Download for Windows x64](https://github.com/Kechos23/ScreenText/releases/latest)** · [Gitea releases](https://gitea.kechos.com/Kechos23/ScreenText/releases) · [Release notes](docs/releases/v1.0.0.md)
+**[Download for Windows x64](https://github.com/Kechos23/ScreenText/releases/latest)** · [Gitea releases](https://gitea.kechos.com/Kechos23/ScreenText/releases) · [Release notes](docs/releases/v1.1.0.md)
 
 ![ScreenText in dark mode](assets/screenshots/screentext-dark.png)
 
@@ -22,12 +22,12 @@ ScreenText is a portable Windows application with local OCR, editable source and
 
 ## Install and use
 
-1. Download `ScreenText-1.0.0-win-x64.zip` from either release page and extract the entire folder.
+1. Download `ScreenText-1.1.0-win-x64.zip` from either release page and extract the entire folder.
 2. Run `ScreenText.exe`. Keep the helper files and `copilot-runtime` folder beside it.
 3. Capture a region with **Ctrl + Alt + T**, or use **Clipboard** / **Open image**. The shortcut can be changed in Settings.
 4. Review the extracted text, choose a target language, then use **Translate to …** or **Ctrl + Enter** in Source.
 
-The portable package includes private Node/Copilot runtimes; no global Node, Codex, ShareX or Copilot installation is needed. ScreenText itself is not code-signed. SHA-256 checksums are published alongside each release.
+The portable package includes private Node/Copilot runtimes; no global Node or Copilot installation is needed. ShareX remains optional. The optional Codex CLI connection requires an installed official Codex CLI; Direct works without it. ScreenText itself is not code-signed. SHA-256 checksums are published alongside each release.
 
 ### Requirements
 
@@ -40,9 +40,12 @@ Go to **Settings → AI Providers**, select a provider and connect. **Use for AI
 | Provider | Connection | Usage and sign-out |
 | --- | --- | --- |
 | OpenAI / ChatGPT plan | Independent ScreenText browser sign-in; stored for the current Windows user | Uses the plan's shared Work/Codex allowance, not ordinary ChatGPT Chat. ScreenText sign-out affects its own connection. |
+| OpenAI / Codex CLI | Official installed Codex CLI, using its shared ChatGPT login | Uses Work/Codex allowance. Sign-out clears the shared local CLI login and affects other tools relying on it. |
 | GitHub Copilot | Official CLI browser sign-in, consumed by the official SDK | Uses Copilot plan allowance/policies. The CLI sign-in is shared on that Windows account; signing it out affects other tools relying on it. |
 
-The header identifies the active provider and checked account. Copilot checks the expected host/login again before inference and blocks requests if another tool changes the account. Closing ScreenText keeps sign-in. Moving the app to a different PC does not transfer credentials.
+Within OpenAI, choose **Direct — Sign in to ScreenText** or **Codex CLI — Use Codex on this PC**. Each method retains its own extraction/translation defaults. Direct remains the default on existing installations. Codex CLI must be permitted by your organization; it does not bypass admin policies. Use **Check connection** to review an existing CLI sign-in, or **Sign in via Codex** to open the official browser flow. Its credentials stay managed by Codex and survive normal application restarts.
+
+The header identifies the active provider, OpenAI connection method and checked account. Copilot checks the expected host/login again before inference and blocks requests if another tool changes the account. Closing ScreenText keeps sign-in. Moving the app to a different PC does not transfer credentials.
 
 Copilot supports `github.com` and Enterprise Cloud `*.ghe.com`; self-hosted Enterprise Server is not supported. Enterprise administrators must permit CLI usage. A working VS Code Copilot account alone does not establish CLI entitlement. Enterprise deployment still needs validation in your own managed environment.
 
@@ -50,7 +53,7 @@ Models are selected independently for extraction and translation. Catalog refres
 
 ## Privacy and storage
 
-Screenshots stay temporary in memory unless you explicitly save them or enable automatic saving. New sessions start empty. Preferences are portable when the application folder is writable; otherwise they use `%LOCALAPPDATA%\ScreenText\Settings`. ChatGPT credentials are separately protected with Windows CurrentUser DPAPI. Copilot credentials remain managed by the official CLI.
+Screenshots stay temporary in memory unless you explicitly save them or enable automatic saving. New sessions start empty. Preferences are portable when the application folder is writable; otherwise they use `%LOCALAPPDATA%\ScreenText\Settings`. ChatGPT credentials are separately protected with Windows CurrentUser DPAPI. Copilot and Codex CLI credentials remain managed by their official CLIs. ScreenText never imports those credential files.
 
 Local OCR runs on your computer. AI actions send the source text or selected image to the active provider and follow that provider's policies. Copilot requests disable tools, configuration discovery, hooks, skills and memory; owned SDK sessions are cleaned after use and reclaimed after an interrupted run. Clipboard history/synchronization and external image editors have their own storage behavior.
 

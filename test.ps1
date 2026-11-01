@@ -1,10 +1,10 @@
 ﻿param(
- [ValidateSet('Quick','Core','UI','Lifecycle','Storage','Translation','Languages','Reading','Runtime','Connections','All')][string]$Suite='Quick',
+ [ValidateSet('Quick','Core','UI','Lifecycle','Storage','Translation','Languages','Reading','Runtime','Connections','CodexCLI','All')][string]$Suite='Quick',
  [switch]$Previews,[switch]$KeepArtifacts,[switch]$ForceBuild,[switch]$List,
  [ValidateRange(5,600)][int]$TimeoutSeconds=90
 )
 $ErrorActionPreference='Stop'
-$suites=[ordered]@{Quick=@('CoreSmoke','ReadingUiSmoke');Core=@('CoreSmoke');UI=@('AppearanceSmoke','WorkspaceUiSmoke','ReadingUiSmoke');Lifecycle=@('StartupSmoke','InteractionSmoke');Storage=@('TempAndMenuSmoke','EditorSmoke');Translation=@('CodexSmoke','TranslationRetentionSmoke');Languages=@('LanguageSmoke','OneOcrSmoke');Reading=@('ReadingUiSmoke');Runtime=@('RuntimeRepairsSmoke');Connections=@('ChatGptSmoke','CopilotSmoke');All=@('ChatGptSmoke','CopilotSmoke','RuntimeRepairsSmoke','CoreSmoke','TempAndMenuSmoke','AppearanceSmoke','StartupSmoke','InteractionSmoke','EditorSmoke','CodexSmoke','LanguageSmoke','OneOcrSmoke','WorkspaceUiSmoke','ReadingUiSmoke','TranslationRetentionSmoke')}
+$suites=[ordered]@{Quick=@('CoreSmoke','ReadingUiSmoke');Core=@('CoreSmoke');UI=@('AppearanceSmoke','WorkspaceUiSmoke','ReadingUiSmoke');Lifecycle=@('StartupSmoke','InteractionSmoke');Storage=@('TempAndMenuSmoke','EditorSmoke');Translation=@('CodexSmoke','TranslationRetentionSmoke');Languages=@('LanguageSmoke','OneOcrSmoke');Reading=@('ReadingUiSmoke');Runtime=@('RuntimeRepairsSmoke');Connections=@('ChatGptSmoke','CopilotSmoke','CodexCliSmoke');CodexCLI=@('CodexCliSmoke');All=@('ChatGptSmoke','CopilotSmoke','CodexCliSmoke','RuntimeRepairsSmoke','CoreSmoke','TempAndMenuSmoke','AppearanceSmoke','StartupSmoke','InteractionSmoke','EditorSmoke','CodexSmoke','LanguageSmoke','OneOcrSmoke','WorkspaceUiSmoke','ReadingUiSmoke','TranslationRetentionSmoke')}
 if($List){$suites.GetEnumerator() | ForEach-Object {Write-Output ($_.Key+': '+($_.Value -join ', '))};return}
 $overall=[Diagnostics.Stopwatch]::StartNew()
 & (Join-Path $PSScriptRoot 'build.ps1') -Force:$ForceBuild -Quiet
