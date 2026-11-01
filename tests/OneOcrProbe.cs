@@ -1,0 +1,2 @@
+﻿using System;using System.IO;using System.Threading;
+class OneOcrProbe {static int Main(){string mode=File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"oneocr-probe-mode.txt"));if(mode=="hang")Thread.Sleep(60000);if(mode=="crash"){Console.Error.Write("Simulated native failure");return 9;}if(mode=="malformed"){Console.Write("invalid JSON");return 0;}if(mode=="empty")Console.Write("{\"Available\":true,\"Text\":\"\"}");else Console.Write("{\"Available\":false,\"Error\":\"Simulated unsupported Snipping Tool\"}");return 0;}}

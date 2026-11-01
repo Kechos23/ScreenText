@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "screentext-copilot-runtime",
+  "version": "0.0.0",
+  "dependencies": {
+    "@github/copilot-sdk": "1.0.28"
+  },
+  "overrides": {
+    "zod": "4.6.6"
+  }
+}

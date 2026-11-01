@@ -1,0 +1,21 @@
+# Generated builds, dependencies, caches, logs and local proofs
+/outputs/
+/work/
+/artifacts/
+node_modules/
+__pycache__/
+*.pyc
+*.user
+*.suo
+*.log
+*.tmp
+*.dmp
+# Never publish credentials or local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.pfx
+*.p12
+connection.dat
+auth.json

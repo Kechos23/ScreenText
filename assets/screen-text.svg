@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<rect x="4" y="4" width="248" height="248" rx="37" fill="#172331"/>
+<g transform="translate(17 10) scale(.88)">
+<path d="M26 79L151 19V72L79 107V136L102 125V185L26 222Z" fill="#edf2f0"/>
+<defs><mask id="text-lines"><rect width="256" height="256" fill="white"/><path d="M167 189L202 174M167 207L202 192" fill="none" stroke="black" stroke-width="7" stroke-linecap="round"/></mask></defs>
+<path d="M122 119L151 105V85L220 52V202L96 244V199L122 185Z" fill="#5e9ea0" mask="url(#text-lines)"/>
+</g>
+</svg>

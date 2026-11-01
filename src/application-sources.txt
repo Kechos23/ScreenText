@@ -1,0 +1,15 @@
+ScreenText.cs
+LanguageSupport.cs
+OneOcrSupport.cs
+Backend.cs
+EditorSupport.cs
+UiControls.cs
+RequestRunner.cs
+TransientStorage.cs
+AppStorage.cs
+ChatGptConnection.cs
+AiConnectionsUi.cs
+CopilotHost.cs
+CopilotConnection.cs
+CopilotUi.cs
+AppVersion.cs
